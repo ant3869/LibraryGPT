@@ -53,17 +53,13 @@ namespace LibraryGPT
         {
             string extension = Path.GetExtension(scriptPath).ToLower();
 
-            switch (extension)
+            return extension switch
             {
-                case ".ps1":
-                    return "powershell";
-                case ".bat":
-                    return "cmd";
-                case ".py":
-                    return "python";
-                default:
-                    throw new Exception("Unsupported script type");
-            }
+                ".ps1" => "powershell",
+                ".bat" => "cmd",
+                ".py" => "python",
+                _ => throw new Exception("Unsupported script type"),
+            };
         }
 
         private static void UpdateOutputControl(Control control, string message)
