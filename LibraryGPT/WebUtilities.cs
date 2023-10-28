@@ -1,5 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
+using System.Text;
+using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
 using HAP = HtmlAgilityPack; // Alias for HtmlAgilityPack
@@ -96,6 +99,17 @@ namespace LibraryGPT
             _client.DefaultRequestHeaders.Add(headerName, headerValue);
         }
 
+        ///// <summary>
+        ///// Reloads the current page by redirecting to the current URL.
+        ///// </summary>
+        ///// <param name="response">The HttpResponse instance.</param>
+        //public static void Reload(this HttpResponse response)
+        //{
+        //    response.Redirect(HttpContext =>  RequestUrl.Reload(response);
+        //    RequestUrl.Reload(response);
+        //    response.Redirect(HttpContext.RequestUrl().ToString(), true);
+        //}
+
         /// <summary>
         /// Checks if there is an active internet connection.
         /// Ex: bool isInternetAvailable = await IsInternetAvailableAsync();
@@ -104,11 +118,30 @@ namespace LibraryGPT
         public static async Task<bool> IsInternetAvailableAsync()
         {
             try
-            {
+        {
                 var response = await _client.GetAsync("http://www.google.com");
                 return response.IsSuccessStatusCode;
-            }
+        }
             catch { return false; }
         }
+
+        ///// <summary>
+        ///// Sets a specific HTTP status code and description for the response.
+        ///// </summary>
+        ///// <param name="response">The HttpResponse instance.</param>
+        ///// <param name="code">The HTTP status code.</param>
+        ///// <param name="description">The status description.</param>
+        ///// <param name="endResponse">Indicates whether to terminate the response.</param>
+        //public static void SetStatus(this HttpResponse response, int code, string description, bool endResponse)
+        //{
+        //    response.StatusCode = code;
+        //    response.StatusDescription = description;
+
+        //    if (endResponse)
+        //        throw new HttpException(code, description); // Replace response.End() with an exception
+        //}
+
+        // Commented out due to UriQueryString
     }
+
 }
