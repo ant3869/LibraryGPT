@@ -117,7 +117,7 @@ Contributions to LibraryGPT are welcome. If you have ideas or functions that can
 For any queries, feedback, or contributions, please contact:
 - **Name**: SuperHands
 - **Email**: anthon3869@gmail.com
-- **GitHub**: https://github.com/ant3869
+- **GitHub**: https://www.github.com/ant3869
 
 ## License
 This project is licensed under the MIT License - see the LICENSE file for details.
