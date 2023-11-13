@@ -114,5 +114,12 @@ namespace LibraryGPT
             Left,
             Fill
         }
+
+        public enum TextCase
+        {
+            Upper,
+            Lower,
+            Title
+        }
     }
 }
