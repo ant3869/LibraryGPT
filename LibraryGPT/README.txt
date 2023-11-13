@@ -45,9 +45,9 @@ IAnimal animal = PatternImplementations.AnimalFactory.CreateAnimal("dog");
 
 For any queries, feedback, or contributions, please contact:
 
-- **Name**: Anthony Clark
+- **Name**: SuperHands
 - **Email**: anthon3869@gmail.com
-- **GitHub**: [Your GitHub Profile Link]
+- **GitHub**: https://github.com/ant3869
 
 
 
