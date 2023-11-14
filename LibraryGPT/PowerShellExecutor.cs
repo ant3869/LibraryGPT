@@ -86,5 +86,29 @@ namespace LibraryGPT
 
             runspace.Close();
         }
+
+        public static async Task ExecuteRemoteScriptAsync(string machineName, string script)
+        {
+            using var runspace = RunspaceFactory.CreateRunspace();
+            runspace.Open();
+
+            using var powershell = PowerShell.Create();
+            powershell.Runspace = runspace;
+            powershell.AddScript(script);
+
+            try
+            {
+                // Begin the execution of the script asynchronously and wait for the result
+                var result = await Task<PSDataCollection<PSObject>>.Factory.FromAsync(
+                    powershell.BeginInvoke(), powershell.EndInvoke);
+
+                // Handle result if necessary
+            }
+            catch (RuntimeException ex)
+            {
+                // Log or handle PowerShell runtime exceptions
+                Console.WriteLine($"Error executing script on {machineName}: {ex.Message}");
+            }
+        }
     }
 }

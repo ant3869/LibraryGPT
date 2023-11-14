@@ -226,5 +226,41 @@ namespace LibraryGPT
         {
             richTextBox.SelectionFont = new Font(richTextBox.SelectionFont, fontStyle);
         }
+
+
+
+
+
+
+        /// <summary>
+        /// Asynchronously generates a summary of the content in a TextBox.
+        /// </summary>
+        /// <param name="textBoxText">The text content of the TextBox.</param>
+        /// <returns>The task representing the asynchronous operation, returning a summary of the text.</returns>
+        public static async Task<string> GenerateTextSummaryAsync(string textBoxText)
+        {
+            // Simulate asynchronous operation
+            return await Task.Run(() => GenerateSummary(textBoxText));
+        }
+
+        /// <summary>
+        /// Generates a summary of the provided text.
+        /// </summary>
+        /// <param name="text">The text to summarize.</param>
+        /// <returns>The summarized text.</returns>
+        private static string GenerateSummary(string text)
+        {
+            if (string.IsNullOrWhiteSpace(text))
+                return string.Empty;
+
+            // Split text into sentences
+            var sentences = text.Split(new[] { '.', '?', '!' }, StringSplitOptions.RemoveEmptyEntries);
+
+            // Simple algorithm to pick every nth sentence to form a summary
+            var nth = 5; // Adjust this value to change summarization granularity
+            var summarySentences = sentences.Where((sentence, index) => index % nth == 0);
+
+            return string.Join(". ", summarySentences) + ".";
+        }
     }
 }
