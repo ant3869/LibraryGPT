@@ -11,7 +11,13 @@ namespace LibraryGPT
 {
     public static class WebUtilities
     {
+        private static readonly HttpClient _httpClient;
         private static readonly HttpClient _client = new();
+
+        public static HttpClient Client
+        {
+            get { return _httpClient; }
+        }
 
         // Fetch a web page as a string
         public static async Task<string?> FetchPageAsync(string url)
@@ -142,6 +148,43 @@ namespace LibraryGPT
         //}
 
         // Commented out due to UriQueryString
+
+        //public static async Task<List<Customer>> ScrapeCustomerQueueAsync(string url)
+        //{
+        //    var customerQueue = new List<Customer>();
+
+        //    try
+        //    {
+        //        var response = await _httpClient.GetAsync(url);
+        //        response.EnsureSuccessStatusCode();
+        //        var content = await response.Content.ReadAsStringAsync();
+
+        //        var document = new HtmlDocument();
+        //        document.LoadHtml(content);
+
+        //        // Assuming that customer data is in a table and each customer is a row <tr>
+        //        var nodes = document.DocumentNode.SelectNodes("//tr[contains(@class, 'customer-row-class')]");
+
+        //        if (nodes != null)
+        //        {
+        //            foreach (var node in nodes)
+        //            {
+        //                // Adjust the XPath queries according to the actual HTML structure
+        //                var name = node.SelectSingleNode(".//td[1]").InnerText.Trim();
+        //                var reason = node.SelectSingleNode(".//td[2]").InnerText.Trim();
+
+        //                customerQueue.Add(new Customer { Name = name, ReasonForVisit = reason });
+        //            }
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        // Handle any exceptions that occur during the fetch
+        //        Console.WriteLine($"An error occurred while scraping the customer queue: {ex.Message}");
+        //    }
+
+        //    return customerQueue;
+        //}
     }
 
 }
